@@ -12,7 +12,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if(findViewById(R.id.container) != null){
+            if(savedInstanceState != null){
+                return;
+            }
+
+            HeadLinesFragment headLinesFragment = new HeadLinesFragment();
+
+            headLinesFragment.setArguments(getIntent().getExtras());
+
+            getFragmentManager().beginTransaction()
+                    .add(R.id.container,headLinesFragment)
+                    .commit();
+
 
         }
+
     }
 }
